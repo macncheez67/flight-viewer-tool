@@ -1,0 +1,85 @@
+<div className="App">
+    <h1>Flights Colors</h1>
+    <section className="form-container">
+      <form>
+        <label>street:</label>
+        <input
+          value={address.street}
+          placeholder="1234 abc street"
+          onChange={update("street")}
+          id="street"
+          type="text"
+        />
+        <label>city:</label>
+        <input
+          placeholder="Los Angeles"
+          type="text"
+          value={address.city}
+          onChange={update("city")}
+          id="city"
+        />
+        <br />
+        <label>State:</label>
+        <input
+          placeholder="CA / California"
+          type="text"
+          value={address.state}
+          onChange={update("state")}
+          id="state"
+        />
+        <label>zip code:</label>
+        <input
+          placeholder="91423"
+          type="text"
+          value={address.postalcode}
+          onChange={update("postalcode")}
+          id="postalcode"
+        />
+        <br />
+        <label>Country:</label>
+        <input
+          placeholder="USA"
+          type="text"
+          value={address.country}
+          onChange={update("country")}
+          id="country"
+        />
+        <br />
+
+        <button onClick={(e) => submitHandler(e)}>Search</button>
+      </form>
+    </section>
+    <Map coords={coords} dispaly_name={display_name} />
+  </div>
+
+  <button
+          type="button" 
+          id=${flight.name} 
+          name=${flight.name} 
+          onClick = ${console.log("testestest")}
+          value="Before"
+        />
+
+
+
+        function MapView() {
+          let map = useMap();
+          map.setView([latitude, longitude], map.getZoom());
+          for(let i=0; i<flights.length; i++){
+            for(let j=0; j<flightsets.length; j++){
+              if(flightsets[j].name == flights[i]){
+                L.polyline([
+                  [32.914055, -97.058468],
+                  [32.902286, -97.058468]
+                ], {color: 'red'}).addTo(map);
+              }
+            }
+          }
+          //sets AAL1612 (arrival)
+          L.polyline([
+            [32.914055, -97.058468],
+            [32.902286, -97.058468]
+          ]).addTo(map);
+           //Sets geographical center and zoom for the view of the map
+          return null;
+        }
