@@ -56,18 +56,21 @@ export default function App() {
     );
 }, []);*/
   function add(name){
-    flights.push(name);
+    console.log("flag: " + flag)
+    flights.push(name)
+    setFlag(flag+1)
     console.log("Done and moving to map.jsx");
   }
   
   function remove(name){
+    console.log("flag: " + flag)
     for(let i=0; i<flights.length; i++){
       if(flights[i] === name){
         const index = flights.indexOf(name);
         const tempflights = flights.splice(index, 1);
-        console.log(flights)
       }
     }
+    setFlag(flag-1);
     console.log("Done and moving to map.jsx");
   }
 
@@ -75,14 +78,11 @@ export default function App() {
     const selected = document.getElementsByClassName("selflight")
     for(let i = 0; i<selected.length; i++){
       if(selected[i].checked && (flights.includes(selected[i].id)==false)){
-        console.log(selected[i].id);
         add(selected[i].id);
         console.log("1")
-        setFlag(flag+1);
       }if(selected[i].checked ==false && flights.includes(selected[i].id)){
         remove(selected[i].id);
         console.log("2")
-        setRem(1);
       }
     }
   };

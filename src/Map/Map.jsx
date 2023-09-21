@@ -21,8 +21,16 @@ export default function Map({ coords, display_name, flights}) {
     for(let i=0; i<flights.length; i++){
       for(let j=0; j<flightsets.length; j++){
         if(flightsets[j].name === flights[i]){
-          console.log("Test");
-          L.polyline(flightsets[j].cds, {color: 'red'}).addTo(map);
+          if(flightsets[j].cat === "Main"){
+            var sepcolor = 'red';
+            console.log("Test");
+            L.polyline(flightsets[j].cds, {color: sepcolor}).addTo(map);
+          }else{
+            var sepcolor = 'blue';
+            console.log("Test");
+            L.polyline(flightsets[j].cds, {color: sepcolor}).addTo(map);
+
+          }
         }
       }
     }
